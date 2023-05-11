@@ -25,11 +25,9 @@ public class ClientTest {
     {
         return kamal;
     }
-    @GetMapping("/test")
+    @GetMapping("/callbase")
     public ResponseEntity<Object> getconfig()
     {
-        return transportService.callApi("http://demo/test",null,"GET",String.class);
+        return transportService.callApi("http://demo/serverInfo",null,"GET",String.class);
     }
-
-
 }

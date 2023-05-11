@@ -20,7 +20,7 @@ public class EurekaClientTest
         return "Hello World";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/serverInfo")
     public String test()
     {
         return "calling service "+ eurekaClient.getApplicationInfoManager().getInfo().getInstanceId();
