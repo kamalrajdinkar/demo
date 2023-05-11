@@ -1,8 +1,10 @@
 package com.jswone.json;
 
+import com.jswone.base.bean.ExternalProperties;
 import com.jswone.base.transport.service.ITransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -10,18 +12,32 @@ import org.springframework.web.bind.annotation.*;
 import com.jswone.entity.*;
 
 @RestController
+@RefreshScope
 public class Test{
 
-    @Value("${kamal:huhu}")
-    private String data;
+    @Autowired
+    private ExternalProperties externalProperties;
+
+    @Value("${app.kamal:custom}")
+    private String kamal;
+
+    @Value("${app.manish:custom}")
+    private String manish;
     @Autowired
     private ITransportService iTransportService;
 
     @GetMapping("/config")
     public String config()
     {
-        return data;
+        return kamal+" "+manish;
     }
+
+    @GetMapping("/config2")
+    public String config2()
+    {
+        return externalProperties.getProperty("kamal")+externalProperties.getProperty("manish");
+    }
+
 
 
     @GetMapping("/get")
