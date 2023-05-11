@@ -13,6 +13,7 @@ import com.jswone.entity.*;
 
 @RestController
 @RefreshScope
+@RequestMapping("/baseclient")
 public class Test{
 
     @Autowired
