@@ -1,6 +1,7 @@
 package com.jswone.json;
 
-import com.jswone.base.bean.ExternalProperties;
+import com.jswone.base.config.ExternalProperties;
+import com.jswone.base.config.ExternalProperties;
 import com.jswone.base.transport.service.ITransportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
