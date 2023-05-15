@@ -2,6 +2,7 @@ package com.jswone;
 
 import com.jswone.base.transport.service.ITransportService;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,13 @@ public class ClientTest {
     {
         log.info("Calling baseClient");
         return transportService.callApi("http://demo/serverInfo",null,"GET",String.class);
+    }
+
+    @GetMapping ("/callbasetrace")
+    public ResponseEntity<Object> getconfigtrace()
+    {
+        log.info("for trace");
+        return transportService.callApi("http://demo/serverInfo",null,"GET",String.class,MDC.get("traceId"));
     }
 
 //    @GetMapping("callthroghjswbase")
